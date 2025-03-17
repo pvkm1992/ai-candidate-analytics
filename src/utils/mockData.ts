@@ -1,5 +1,4 @@
-
-import { Candidate, CandidateBucket } from "@/types";
+import { Candidate, CandidateBucket, CandidateCategory } from "@/types";
 
 // Mock candidate data
 export const candidates: Candidate[] = [
@@ -300,8 +299,6 @@ export const dashboardSummary = {
 
 // Helper function to get candidates by bucket
 export const getCandidatesByBucket = (bucketId: string): Candidate[] => {
-  // This is mock logic - in a real app, this would filter by actual bucket id
-  // For now, we'll just return a filtered subset based on roles that might match the bucket
   switch (bucketId) {
     case "b1": // Frontend Developers
       return candidates.filter(c => 
@@ -334,5 +331,127 @@ export const getCandidatesByBucket = (bucketId: string): Candidate[] => {
       );
     default:
       return candidates;
+  }
+};
+
+// AI-generated categories for the selected role
+export const candidateCategories: CandidateCategory[] = [
+  {
+    name: "Deep Learning Specialists",
+    percentage: 24.3,
+    fundingAmount: 10.8,
+    categoryScore: 92,
+    candidates: candidates.filter(c => c.role.includes("Data") || c.role.includes("Machine Learning")).slice(0, 5)
+  },
+  {
+    name: "NLP Engineers",
+    percentage: 15.5,
+    fundingAmount: 6.8,
+    categoryScore: 87,
+    candidates: candidates.filter(c => c.role.includes("Data") || c.role.includes("Analytics")).slice(0, 4)
+  },
+  {
+    name: "Computer Vision Experts",
+    percentage: 14.3,
+    fundingAmount: 6.0,
+    categoryScore: 85,
+    candidates: candidates.filter(c => c.role.includes("Data") || c.role.includes("Machine Learning")).slice(0, 3)
+  },
+  {
+    name: "ML Ops Practitioners",
+    percentage: 9.4,
+    fundingAmount: 4.8,
+    categoryScore: 81,
+    candidates: candidates.filter(c => c.role.includes("DevOps") || c.role.includes("Infrastructure")).slice(0, 3)
+  },
+  {
+    name: "Data Engineers",
+    percentage: 8.7,
+    fundingAmount: 2.9,
+    categoryScore: 79,
+    candidates: candidates.filter(c => c.role.includes("Data") || c.role.includes("Backend")).slice(0, 3)
+  },
+  {
+    name: "AI Ethics Specialists",
+    percentage: 5.5,
+    fundingAmount: 1.9,
+    categoryScore: 76,
+    candidates: candidates.filter(c => c.role.includes("Product") || c.role.includes("Manager")).slice(0, 2)
+  },
+  {
+    name: "Reinforcement Learning",
+    percentage: 5.5,
+    fundingAmount: 1.5,
+    categoryScore: 74,
+    candidates: candidates.filter(c => c.role.includes("Data") || c.role.includes("Backend")).slice(0, 2)
+  },
+  {
+    name: "Speech Recognition",
+    percentage: 3.6,
+    fundingAmount: 1.1,
+    categoryScore: 72,
+    candidates: candidates.filter(c => c.role.includes("Frontend") || c.role.includes("Full Stack")).slice(0, 2)
+  },
+  {
+    name: "Autonomous Systems",
+    percentage: 2.3,
+    fundingAmount: 0.8,
+    categoryScore: 68,
+    candidates: candidates.filter(c => c.role.includes("QA") || c.role.includes("Engineer")).slice(0, 1)
+  },
+  {
+    name: "Recommender Systems",
+    percentage: 2.3,
+    fundingAmount: 0.7,
+    categoryScore: 65,
+    candidates: candidates.filter(c => c.role.includes("Data") || c.role.includes("Analytics")).slice(0, 1)
+  }
+];
+
+// Key insights for the visualization
+export const visualizationInsights = [
+  {
+    title: "Deep Learning Specialists",
+    description: "Deep Learning Specialists account for 24.3% of top candidates, making them the most prevalent category in the AI talent pool."
+  },
+  {
+    title: "ML Ops Growth",
+    description: "ML Ops Practitioners show a 15% increase compared to last quarter, highlighting the growing importance of deployment expertise."
+  },
+  {
+    title: "Skill Gap Alert",
+    description: "NLP Engineers score 18% below required expertise in transformer models, which is a core requirement for the role."
+  }
+];
+
+// Additional role-specific insights
+export const roleInsights = {
+  "Data Scientist": {
+    title: "Data Science Talent Pool Analysis",
+    description: "AI-identified categories of data science candidates",
+    categoryInsights: [
+      {
+        title: "Statistical Modeling Experts",
+        description: "Candidates with exceptional statistical modeling skills represent 35% of the talent pool but only 15% have industry experience."
+      },
+      {
+        title: "ML Engineering Crossover",
+        description: "28% of candidates show strong ML engineering skills alongside data science, making them versatile hires."
+      }
+    ]
+  },
+  "Machine Learning Engineer": {
+    title: "ML Engineer Talent Pool Analysis",
+    description: "AI-identified categories of machine learning engineering candidates",
+    categoryInsights: [
+      {
+        title: "Deep Learning Specialists",
+        description: "42% of candidates specialize in deep learning frameworks, particularly PyTorch and TensorFlow."
+      },
+      {
+        title: "Production Deployment Gap",
+        description: "Only 23% of candidates have substantial experience deploying models to production environments."
+      }
+    ]
   }
 };

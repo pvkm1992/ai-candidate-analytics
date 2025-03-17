@@ -21,6 +21,8 @@ export interface Candidate {
     level: number;
     required: number;
   }[];
+  fundingAmount?: number; // For visualization purposes
+  category?: string; // AI-generated category
 }
 
 export interface MetricCardProps {
@@ -41,3 +43,12 @@ export interface CandidateBucket {
   topCandidate: string;
   priority: 'high' | 'medium' | 'low';
 }
+
+export interface CandidateCategory {
+  name: string;
+  percentage: number;
+  fundingAmount: number; // In thousands/millions
+  categoryScore: number;
+  candidates: Candidate[];
+}
+
